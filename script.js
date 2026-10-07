@@ -3,9 +3,22 @@
   function wa(msg){return WA+encodeURIComponent(msg)}
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 
-  /* ---- Content: edit here ---- */
+  /* ---- Content: edit here ----
+     PHOTOS: add  img:['file-1.jpeg','file-2.jpeg']  to any fabric or cap.
+     A bare filename is read from IMG_DIR below (products/fabrics/); a path with a
+     slash, e.g. 'products/caps/zeeta-1.jpg', is used exactly as written.
+     The first file is shown first. Items without img keep the fabric pattern. */
+  var IMG_DIR='products/fabrics/';
   var fabrics=[
-    {n:'Mr. Fendi',p:'₦4,500',u:'yard',c:'Fabrics'},
+    {n:'Mr. Fendi',p:'₦4,500',u:'yard',c:'Fabrics',img:[
+      '0a33cbdc-2e1d-4f6e-98c4-937ec276c8d0.jpeg',
+      '0f46adae-d82d-431b-80cf-df8c51d07349.jpeg',
+      '5ff9bded-a8c2-4994-949f-f8ca4b3e3103.jpeg',
+      '7a1a054a-dbf3-4189-9f14-1d8a3c83522e.jpeg',
+      '8b2ce98a-7a5e-4287-93ad-e06d45d6c3c3.jpeg',
+      '926bcce8-1117-4bad-93c8-a79f7606686c.jpeg',
+      'b8a8bf51-7c44-499b-9f5e-e794bb70b10c.jpeg'
+    ]},
     {n:'Phanta Plus',p:'₦5,500',u:'yard',c:'Fabrics'},
     {n:'Supreme Longhua',p:'₦3,700',u:'yard',c:'Fabrics'},
     {n:'Wagambari',p:'₦30,000',u:'5-yard set',d:'Traditional men\'s fabric, supplied as a 5-yard set.',c:'Wagambari'},
@@ -134,6 +147,98 @@
 
   /* ---- Product detail view ---- */
   var backdrop=document.getElementById('modalBackdrop'),lastFocus=null;
+
+  /* ---- Product image gallery (inside the detail view) ---- */
+  var gal=null,reduceMotion=window.matchMedia('(prefers-reduced-motion:reduce)');
+  var closeBtn='<button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>';
+  function imgSrc(f){return f.indexOf('/')>-1?f:IMG_DIR+f}
+  function patternSwatch(){
+    var pat=pats[Math.floor(Math.random()*pats.length)];
+    return '<svg aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#p-'+pat+')"/></svg>';
+  }
+  function galSync(){
+    if(!gal)return;
+    var c=gal.track.children.length,w=gal.track.clientWidth;
+    if(!c||!w)return;
+    var i=Math.max(0,Math.min(c-1,Math.round(gal.track.scrollLeft/w)));
+    gal.i=i;
+    if(gal.count)gal.count.textContent=(i+1)+' / '+c;
+    [].forEach.call(gal.thumbs.children,function(b,k){
+      b.setAttribute('aria-current',k===i?'true':'false');
+      if(k===i)gal.thumbs.scrollTo({left:b.offsetLeft-(gal.thumbs.clientWidth-b.offsetWidth)/2,behavior:reduceMotion.matches?'auto':'smooth'});
+    });
+  }
+  function galStep(d){
+    if(!gal)return;
+    galGo((gal.pend!=null?gal.pend:gal.i)+d);
+  }
+  function galGo(n){
+    if(!gal)return;
+    var c=gal.track.children.length;
+    if(c<2)return;
+    n=(n+c)%c;
+    gal.pend=n;clearTimeout(gal.pt);gal.pt=setTimeout(function(){if(gal)gal.pend=null},700);
+    gal.track.scrollTo({left:n*gal.track.clientWidth,behavior:reduceMotion.matches?'auto':'smooth'});
+  }
+  function galRefresh(){
+    var c=gal.track.children.length,multi=c>1;
+    [].forEach.call(gal.thumbs.children,function(b,k){b.setAttribute('data-i',k);b.setAttribute('aria-label','Show photo '+(k+1))});
+    gal.thumbs.hidden=!multi;
+    [].forEach.call(document.querySelectorAll('#modalSwatch .gal-nav,#modalSwatch .gal-count'),function(el){el.hidden=!multi});
+    galSync();
+  }
+  function buildGallery(item){
+    var sw=document.getElementById('modalSwatch'),th=document.getElementById('modalThumbs');
+    gal=null;th.hidden=true;th.innerHTML='';
+    var files=(item.img||[]).filter(Boolean);
+    if(!files.length){sw.innerHTML=patternSwatch()+closeBtn;return}
+    var slides='',thumbs='';
+    files.forEach(function(f,i){
+      var src=esc(imgSrc(f)),alt=esc(item.n+' — HOF Home of Fabric, photo '+(i+1));
+      slides+='<div class="gal-slide"><img src="'+src+'" alt="'+alt+'" decoding="async" draggable="false"'+(i?' loading="lazy"':'')+'></div>';
+      thumbs+='<button type="button" class="thumb" data-i="'+i+'" aria-label="Show photo '+(i+1)+'"><img src="'+src+'" alt="" decoding="async" loading="lazy" draggable="false"></button>';
+    });
+    sw.innerHTML='<div class="gal" role="group" aria-roledescription="carousel" aria-label="'+esc(item.n)+' photos">'
+      +'<div class="gal-track">'+slides+'</div>'
+      +'<button type="button" class="gal-nav gal-prev" aria-label="Previous photo">&#8249;</button>'
+      +'<button type="button" class="gal-nav gal-next" aria-label="Next photo">&#8250;</button>'
+      +'<span class="gal-count" aria-live="polite"></span></div>'+closeBtn;
+    th.innerHTML=thumbs;
+    gal={track:sw.querySelector('.gal-track'),count:sw.querySelector('.gal-count'),thumbs:th,i:0};
+    var ticking=false;
+    gal.track.addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(function(){ticking=false;galSync()})}},{passive:true});
+    /* a photo that fails to load is dropped; if none load, the fabric pattern is shown */
+    var pairs=[].map.call(gal.track.children,function(s,k){return {s:s,t:th.children[k]}});
+    pairs.forEach(function(p){
+      function drop(){
+        if(p.gone||!gal)return;
+        p.gone=true;p.s.remove();p.t.remove();
+        if(!gal.track.children.length){
+          gal=null;th.hidden=true;th.innerHTML='';
+          sw.innerHTML=patternSwatch()+closeBtn;
+          document.getElementById('modalClose').focus();
+          return;
+        }
+        galRefresh();
+      }
+      p.s.firstChild.addEventListener('error',drop);
+      p.t.firstChild.addEventListener('error',drop);
+    });
+    galRefresh();
+  }
+  document.addEventListener('click',function(e){
+    if(!gal)return;
+    var t=e.target.closest('.gal-prev,.gal-next,.thumb');
+    if(!t)return;
+    if(t.classList.contains('thumb'))galGo(+t.getAttribute('data-i'));
+    else galStep(t.classList.contains('gal-next')?1:-1);
+  });
+  document.addEventListener('keydown',function(e){
+    if(!gal||!backdrop.classList.contains('open'))return;
+    if(e.key==='ArrowRight'){e.preventDefault();galStep(1)}
+    else if(e.key==='ArrowLeft'){e.preventDefault();galStep(-1)}
+  });
+
   function openModal(item){
     if(!item)return;
     lastFocus=document.activeElement;
@@ -143,8 +248,7 @@
       : '<span class="ask" style="font:italic 500 1.1rem/1 var(--display)">Price on request</span>';
     document.getElementById('modalDesc').textContent=item.d||'Premium selection from HOF — Home of Fabric.';
     document.getElementById('modalAvail').textContent=(item.u?'Unit: '+item.u+'   ·   ':'')+'Availability confirmed on WhatsApp';
-    var pat=pats[Math.floor(Math.random()*pats.length)];
-    document.getElementById('modalSwatch').innerHTML='<svg aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#p-'+pat+')"/></svg><button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>';
+    buildGallery(item);
     var msg='Hello HOF, I am interested in '+item.n+'. Please send me more details and availability.';
     document.getElementById('modalOrder').href=wa(msg);
     backdrop.classList.add('open');
