@@ -19,7 +19,19 @@
       '926bcce8-1117-4bad-93c8-a79f7606686c.jpeg',
       'b8a8bf51-7c44-499b-9f5e-e794bb70b10c.jpeg'
     ]},
-    {n:'Phanta Plus',p:'₦5,500',u:'yard',c:'Fabrics'},
+    {n:'Phanta Plus',p:'₦5,500',u:'yard',c:'Fabrics',img:[
+      '01b7bc6d-68d8-4915-a795-59bc6dbd6c66.jpeg',
+      '0cd51af6-0040-4923-b224-3fb02b8a4510.jpeg',
+      '533d7f2d-d9f8-470e-bd49-024f6d1b5ce1.jpeg',
+      'b5b62d5f-b4a8-4c7b-a263-e81de439e01c.jpeg',
+      'ced7fb43-5989-4d37-adac-9d50d785678f.jpeg',
+      'd1900077-1abe-4701-a4be-1d6a4fed6764.jpeg',
+      'f08b7fb2-a416-45eb-9e5b-e4f72908db9a.jpeg',
+      'f5803ace-4ca9-4e26-9480-0bbcc2c1ce03.jpeg',
+      'f7e5b68a-eab2-4c27-b99c-4ac33fa8f6dc.jpeg',
+      'fbe3da1f-60e4-4417-bf53-c4dcf4461f99.jpeg',
+      'ffc2e686-1408-46d7-b744-ae3934819a99.jpeg'
+    ]},
     {n:'Supreme Longhua',p:'₦3,700',u:'yard',c:'Fabrics'},
     {n:'Wagambari',p:'₦30,000',u:'5-yard set',d:'Traditional men\'s fabric, supplied as a 5-yard set.',c:'Wagambari'},
     {n:'Excelsior',p:'₦3,800',u:'yard',c:'Fabrics'},
