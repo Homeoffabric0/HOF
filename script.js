@@ -127,14 +127,24 @@
     n:'Oliva',
     p:'₦4,000',
     u:'yard',
-    c:'Fabrics'
+    c:'Fabrics',
+    img:[
+      'acda9fee-d330-4236-a00a-b9c33fcb3586.jpeg',
+      '8a28a35e-14c7-45dd-b6f3-b2a6324b8a46.jpeg',
+      'a0eb8619-13cc-4bff-9b0c-bd3a1f0c4f9b.jpeg'
+    ]
   },
 
   {
     n:'Trevita',
     p:'₦4,000',
     u:'yard',
-    c:'Fabrics'
+    c:'Fabrics',
+    img:[
+      '158153ca-1802-4963-b3c5-ebe39dcd0611.jpeg',
+      '575ad282-d4b4-49a4-963b-dd5977b0c71f.jpeg',
+      'c74dd1ab-0bcd-42e2-87bb-263364bd01a8.jpeg'
+    ]
   },
 
   {
@@ -142,7 +152,12 @@
     p:'₦11,500',
     u:'yard',
     d:'Wool fabric for refined tailoring.',
-    c:'Fabrics'
+    c:'Fabrics',
+    img:[
+      'b2def7dd-4815-43b6-800a-cabf775b9143.jpeg',
+      '4e66d369-c72b-40b8-af99-77bfef461b8b.jpeg',
+      '89322bd9-7a3b-407c-9b19-258d632d8252.jpeg'
+    ]
   },
 
   {
@@ -150,7 +165,13 @@
     p:'₦13,500',
     u:'yard',
     d:'Wool fabric from our premium range.',
-    c:'Fabrics'
+    c:'Fabrics',
+    img:[
+      '4821145a-eba2-4978-833e-bdca3160b61d.jpeg',
+      '5767b311-a8b4-4a93-a704-6963ea99ea4e.jpeg',
+      'c1ba8974-1a60-4da2-ac7b-2cd80098ef2f.jpeg',
+      'd67b7729-aaab-4d09-bd3e-c9b3b6b3f583.jpeg'
+    ]
   },
 
   {
@@ -158,7 +179,12 @@
     p:'₦7,000',
     u:'yard',
     d:'A premium selection for distinguished dressing.',
-    c:'Fabrics'
+    c:'Fabrics',
+    img:[
+      '7a632124-9ed9-4d62-b536-c6002134f0fb.jpeg',
+      'ad31e554-d1e9-4b20-b3ff-4c4a4b9cf839.jpeg',
+      'da40dc4a-d45f-47cb-99bc-6edbb18dc325.jpeg'
+    ]
   }
 
 ];
