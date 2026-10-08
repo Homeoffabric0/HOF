@@ -348,3 +348,51 @@ html.js .rv.in{opacity:1;transform:none}
   .hero h1 .ln>span{transform:none}
   html.js .rv{opacity:1;transform:none}
 }
+.about-logo{
+  width:120px;
+  height:auto;
+  display:block;
+  margin-bottom:28px;
+}
+
+.about-media img{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:cover;
+}
+
+.founder-info{
+  margin-top:36px;
+  padding-top:24px;
+  border-top:1px solid #d9d9d9;
+}
+
+.founder-info h3{
+  margin:6px 0 4px;
+  font-size:1.5rem;
+  font-weight:600;
+}
+
+.founder-info p:last-child{
+  margin:0;
+  color:#666;
+}
+
+.eyebrow{
+  font-size:.72rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:600;
+}
+
+@media (max-width:700px){
+  .about-logo{
+    width:100px;
+    margin-bottom:22px;
+  }
+
+  .founder-info{
+    margin-top:28px;
+  }
+}
