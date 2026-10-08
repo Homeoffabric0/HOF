@@ -25,117 +25,143 @@
 
   var fabrics=[
 
-    {
-      n:'Mr. Fendi',
-      p:'₦4,500',
-      u:'yard',
-      c:'Fabrics',
-      img:[
-        '0a33cbdc-2e1d-4f6e-98c4-937ec276c8d0.jpeg',
-        '0f46adae-d82d-431b-80cf-df8c51d07349.jpeg',
-        '5ff9bded-a8c2-4994-949f-f8ca4b3e3103.jpeg',
-        '7a1a054a-dbf3-4189-9f14-1d8a3c83522e.jpeg',
-        '8b2ce98a-7a5e-4287-93ad-e06d45d6c3c3.jpeg',
-        '926bcce8-1117-4bad-93c8-a79f7606686c.jpeg',
-        'b8a8bf51-7c44-499b-9f5e-e794bb70b10c.jpeg'
-      ]
-    },
+  {
+    n:'Mr. Fendi',
+    p:'₦4,500',
+    u:'yard',
+    c:'Fabrics',
+    img:[
+      '0a33cbdc-2e1d-4f6e-98c4-937ec276c8d0.jpeg',
+      '0f46adae-d82d-431b-80cf-df8c51d07349.jpeg',
+      '5ff9bded-a8c2-4994-949f-f8ca4b3e3103.jpeg',
+      '7a1a054a-dbf3-4189-9f14-1d8a3c83522e.jpeg',
+      '8b2ce98a-7a5e-4287-93ad-e06d45d6c3c3.jpeg',
+      '926bcce8-1117-4bad-93c8-a79f7606686c.jpeg',
+      'b8a8bf51-7c44-499b-9f5e-e794bb70b10c.jpeg'
+    ]
+  },
 
-    {
-      n:'Phanta Plus',
-      p:'₦5,500',
-      u:'yard',
-      c:'Fabrics',
-      img:[
-        '01b7bc6d-68d8-4915-a795-59bc6dbd6c66.jpeg',
-        '0cd51af6-0040-4923-b224-3fb02b8a4510.jpeg',
-        '533d7f2d-d9f8-470e-bd49-024f6d1b5ce1.jpeg',
-        'b5b62d5f-b4a8-4c7b-a263-e81de439e01c.jpeg',
-        'ced7fb43-5989-4d37-adac-9d50d785678f.jpeg',
-        'd1900077-1abe-4701-a4be-1d6a4fed6764.jpeg',
-        'f08b7fb2-a416-45eb-9e5b-e4f72908db9a.jpeg',
-        'f5803ace-4ca9-4e26-9480-0bbcc2c1ce03.jpeg',
-        'f7e5b68a-eab2-4c27-b99c-4ac33fa8f6dc.jpeg',
-        'fbe3da1f-60e4-4417-bf53-c4dcf4461f99.jpeg',
-        'ffc2e686-1408-46d7-b744-ae3934819a99.jpeg'
-      ]
-    },
+  {
+    n:'Phanta Plus',
+    p:'₦5,500',
+    u:'yard',
+    c:'Fabrics',
+    img:[
+      '01b7bc6d-68d8-4915-a795-59bc6dbd6c66.jpeg',
+      '0cd51af6-0040-4923-b224-3fb02b8a4510.jpeg',
+      '533d7f2d-d9f8-470e-bd49-024f6d1b5ce1.jpeg',
+      'b5b62d5f-b4a8-4c7b-a263-e81de439e01c.jpeg',
+      'ced7fb43-5989-4d37-adac-9d50d785678f.jpeg',
+      'd1900077-1abe-4701-a4be-1d6a4fed6764.jpeg',
+      'f08b7fb2-a416-45eb-9e5b-e4f72908db9a.jpeg',
+      'f5803ace-4ca9-4e26-9480-0bbcc2c1ce03.jpeg',
+      'f7e5b68a-eab2-4c27-b99c-4ac33fa8f6dc.jpeg',
+      'fbe3da1f-60e4-4417-bf53-c4dcf4461f99.jpeg',
+      'ffc2e686-1408-46d7-b744-ae3934819a99.jpeg'
+    ]
+  },
 
-    {
-      n:'Supreme Longhua',
-      p:'₦3,700',
-      u:'yard',
-      c:'Fabrics'
-    },
+  {
+    n:'Supreme Longhua',
+    p:'₦3,700',
+    u:'yard',
+    c:'Fabrics',
+    img:[
+      '27f6fb66-a40c-48f9-8f5e-cadc3d44cf0c.jpeg',
+      '04f38d22-38b4-408e-a574-d734911db6db.jpeg',
+      '3512b08e-314e-4b95-8160-705a705a332c.jpeg',
+      '59d206e7-ef36-4de1-bd65-ced9bcf1c33f.jpeg'
+    ]
+  },
 
-    {
-      n:'Wagambari',
-      p:'₦30,000',
-      u:'5-yard set',
-      d:'Traditional men\'s fabric, supplied as a 5-yard set.',
-      c:'Wagambari'
-    },
+  {
+    n:'Wagambari',
+    p:'₦30,000',
+    u:'5-yard set',
+    d:'Traditional men\'s fabric, supplied as a 5-yard set.',
+    c:'Wagambari',
+    img:[
+      '12f09750-4c2f-4525-b568-d83e49d6c67d.jpeg',
+      '73307f85-0d62-4bc9-9dd3-c8abf27992b2.jpeg',
+      'c0a42112-daad-4d7a-9b8f-b8ec05aca145.jpeg'
+    ]
+  },
 
-    {
-      n:'Excelsior',
-      p:'₦3,800',
-      u:'yard',
-      c:'Fabrics'
-    },
+  {
+    n:'Excelsior',
+    p:'₦3,800',
+    u:'yard',
+    c:'Fabrics',
+    img:[
+      'f955dc00-e2d5-4063-8bc6-8db54fc95919.jpeg',
+      '92d1cdae-53bf-4baa-b762-2158c1da7c3e.jpeg',
+      '56bf07d0-14c2-44d8-af9d-541f447c98d3.jpeg'
+    ]
+  },
 
-    {
-      n:'Goods Will',
-      p:'₦3,800',
-      u:'yard',
-      c:'Fabrics'
-    },
+  {
+    n:'Goods Will',
+    p:'₦3,800',
+    u:'yard',
+    c:'Fabrics',
+    img:[
+      'dcb99a46-af61-4769-8657-2374797a9d55.jpeg',
+      '91569b1e-4893-4964-af21-0e9797dd3a0a.jpeg',
+      'f7533c93-561e-42c2-a55a-324efb0ed811.jpeg'
+    ]
+  },
 
-    {
-      n:'Casacada by Mhood',
-      p:'₦4,500',
-      u:'yard',
-      c:'Fabrics'
-    },
+  {
+    n:'Casacada by Mhood',
+    p:'₦4,500',
+    u:'yard',
+    c:'Fabrics',
+    img:[
+      '4e43461d-5b59-4c2f-9862-392607783c17.jpeg',
+      'b2d25623-2da6-403a-a9d4-e80c13a1937d.jpeg',
+      'a244258d-9930-48b0-9b5a-5f46b52783f3.jpeg'
+    ]
+  },
 
-    {
-      n:'Oliva',
-      p:'₦4,000',
-      u:'yard',
-      c:'Fabrics'
-    },
+  {
+    n:'Oliva',
+    p:'₦4,000',
+    u:'yard',
+    c:'Fabrics'
+  },
 
-    {
-      n:'Trevita',
-      p:'₦4,000',
-      u:'yard',
-      c:'Fabrics'
-    },
+  {
+    n:'Trevita',
+    p:'₦4,000',
+    u:'yard',
+    c:'Fabrics'
+  },
 
-    {
-      n:'Turkish Wool',
-      p:'₦11,500',
-      u:'yard',
-      d:'Wool fabric for refined tailoring.',
-      c:'Fabrics'
-    },
+  {
+    n:'Turkish Wool',
+    p:'₦11,500',
+    u:'yard',
+    d:'Wool fabric for refined tailoring.',
+    c:'Fabrics'
+  },
 
-    {
-      n:'Yak Wool',
-      p:'₦13,500',
-      u:'yard',
-      d:'Wool fabric from our premium range.',
-      c:'Fabrics'
-    },
+  {
+    n:'Yak Wool',
+    p:'₦13,500',
+    u:'yard',
+    d:'Wool fabric from our premium range.',
+    c:'Fabrics'
+  },
 
-    {
-      n:'VIP Ultimate',
-      p:'₦7,000',
-      u:'yard',
-      d:'A premium selection for distinguished dressing.',
-      c:'Fabrics'
-    }
+  {
+    n:'VIP Ultimate',
+    p:'₦7,000',
+    u:'yard',
+    d:'A premium selection for distinguished dressing.',
+    c:'Fabrics'
+  }
 
-  ];
+];
 
 
   /* =========================================================
