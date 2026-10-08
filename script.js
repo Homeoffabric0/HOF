@@ -197,8 +197,9 @@
   var caps = [
   {
     n:'Zeeta',
-    p:'',
-    u:'',
+    p:'₦6,000',
+    u:'wholesale price',
+    d:'A refined traditional men’s cap with an elegant finish, designed to complement premium native outfits.',
     c:'Caps',
     img:[
       'f21c5def-a15f-48e2-a48f-540093b535eb.jpeg',
@@ -211,8 +212,9 @@
 
   {
     n:'Eleganza',
-    p:'',
-    u:'',
+    p:'₦9,000',
+    u:'wholesale price',
+    d:'A sophisticated men’s cap designed with an elegant look to elevate distinguished native dressing.',
     c:'Caps',
     img:[
       '45f6cdb2-ae7b-420a-8339-1048dd312e4a.jpeg',
@@ -229,8 +231,9 @@
 
   {
     n:'Dara',
-    p:'',
-    u:'',
+    p:'₦36,000',
+    u:'wholesale price',
+    d:'A premium traditional men’s cap with a distinctive and elegant design, perfect for formal occasions and refined native wear.',
     c:'Caps',
     img:[
       'c2ea363b-2f67-446f-8572-12edb7c4d0f9.jpeg',
@@ -243,8 +246,9 @@
 
   {
     n:'Zanna',
-    p:'',
-    u:'',
+    p:'₦18,000',
+    u:'wholesale price',
+    d:'An elegant men’s cap crafted to bring a distinguished finishing touch to premium native outfits.',
     c:'Caps',
     img:[
       'IMG_4957.jpeg',
@@ -265,8 +269,9 @@
 
   {
     n:'Tangaran',
-    p:'',
-    u:'',
+    p:'₦40,000',
+    u:'wholesale price',
+    d:'A premium traditional cap with a bold and sophisticated presence, designed for elevated native styling.',
     c:'Caps',
     img:[
       'IMG_4970.jpeg',
@@ -284,8 +289,9 @@
 
   {
     n:'Kindai Miyamar Borno',
-    p:'',
-    u:'',
+    p:'₦35,000',
+    u:'wholesale price',
+    d:'A distinguished traditional cap inspired by Northern elegance, made for premium native dressing and special occasions.',
     c:'Caps',
     img:[
       'IMG_4986.jpeg',
