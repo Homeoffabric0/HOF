@@ -194,32 +194,114 @@
      CAPS
      ========================================================= */
 
-  var caps=[
-    {
-      n:'Zeeta',
-      c:'Men\'s Caps'
-    },
-    {
-      n:'Eleganza',
-      c:'Men\'s Caps'
-    },
-    {
-      n:'Dara',
-      c:'Men\'s Caps'
-    },
-    {
-      n:'Zanna',
-      c:'Men\'s Caps'
-    },
-    {
-      n:'Tangaran',
-      c:'Men\'s Caps'
-    },
-    {
-      n:'Kindai Miyamar Borno',
-      c:'Men\'s Caps'
-    }
-  ];
+  var caps = [
+  {
+    n:'Zeeta',
+    p:'',
+    u:'',
+    c:'Caps',
+    img:[
+      'f21c5def-a15f-48e2-a48f-540093b535eb.jpeg',
+      '3963aba0-e097-43d5-a045-7163eb687c47.jpeg',
+      '991209fb-5971-4e41-b305-ab21ccab75ed.jpeg',
+      '18d2ebe8-3feb-47e8-b3e5-68ddf4b25efc.jpeg',
+      'b99c9447-d3ba-4ddc-9b2c-93fd6150e957.jpeg'
+    ]
+  },
+
+  {
+    n:'Eleganza',
+    p:'',
+    u:'',
+    c:'Caps',
+    img:[
+      '45f6cdb2-ae7b-420a-8339-1048dd312e4a.jpeg',
+      '0c862dc7-9110-4d12-bff4-f71f60f64ac5.jpeg',
+      '675df448-56fc-4ef3-bf2d-76019f56c396.jpeg',
+      '7b826404-6574-40f0-8a8e-9619c5959376.jpeg',
+      '83d6f22a-9d8f-4021-9815-00798d86d356.jpeg',
+      '830405df-d9e3-4aa4-a828-e0ac984c2f58.jpeg',
+      '88f3d29b-ae78-41b8-9d65-819d9e5a1f79.jpeg',
+      '9c2db721-9243-4c3a-a881-33ace8889f78.jpeg',
+      '351d0c31-10a4-4a13-9e9c-28528984d264.jpeg'
+    ]
+  },
+
+  {
+    n:'Dara',
+    p:'',
+    u:'',
+    c:'Caps',
+    img:[
+      'c2ea363b-2f67-446f-8572-12edb7c4d0f9.jpeg',
+      '05f7ff4f-eb81-4d30-a8a0-1f902c3dd525.jpeg',
+      '6729ec29-4811-4d41-be91-2bdbc14ecc44.jpeg',
+      '918a4fe7-f74f-44b6-8a89-75fffcbf1868.jpeg',
+      'df030906-fabb-4d39-b0ff-8e9e6f6bc930.jpeg'
+    ]
+  },
+
+  {
+    n:'Zanna',
+    p:'',
+    u:'',
+    c:'Caps',
+    img:[
+      'IMG_4957.jpeg',
+      'IMG_4958.jpeg',
+      'IMG_4959.jpeg',
+      'IMG_4960.jpeg',
+      'IMG_4961.jpeg',
+      'IMG_4962.jpeg',
+      'IMG_4963.jpeg',
+      'IMG_4964.jpeg',
+      'IMG_4965.jpeg',
+      'IMG_4966.jpeg',
+      'IMG_4967.jpeg',
+      'IMG_4968.jpeg',
+      'ca602fe3-faa1-42a3-ad7c-3ea63449251d.jpeg'
+    ]
+  },
+
+  {
+    n:'Tangaran',
+    p:'',
+    u:'',
+    c:'Caps',
+    img:[
+      'IMG_4970.jpeg',
+      'IMG_4971.jpeg',
+      'IMG_4972.jpeg',
+      'IMG_4973.jpeg',
+      'IMG_4974.jpeg',
+      'IMG_4975.jpeg',
+      'IMG_4976.jpeg',
+      'IMG_4977.jpeg',
+      'IMG_4978.jpeg',
+      'IMG_4979.jpeg'
+    ]
+  },
+
+  {
+    n:'Kindai Miyamar Borno',
+    p:'',
+    u:'',
+    c:'Caps',
+    img:[
+      'IMG_4986.jpeg',
+      'IMG_4989.jpeg',
+      'IMG_4988.jpeg',
+      'IMG_4990.jpeg',
+      'IMG_4987.jpeg',
+      '335d41d3-d730-418a-b806-c10a9c913c1f.jpeg',
+      '44d56d57-f771-4d92-aaf8-a4b8a52b88e0.jpeg',
+      '5226cc13-aa5a-4ad5-aaaa-d0341b1cf79e.jpeg',
+      '81e7ca62-960d-4fbe-acbd-e371d67b023f.jpeg',
+      '9dd6877b-9384-424b-a762-6006437ece1b.jpeg',
+      'daccdc21-4f7c-4a84-b543-a982c7138ba8.jpeg'
+    ]
+  }
+];
 
 
   /* =========================================================
