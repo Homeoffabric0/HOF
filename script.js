@@ -3,37 +3,43 @@
 
   /* =========================================================
      HOF — HOME OF FABRIC
-     PREMIUM PRODUCT CATALOGUE
+     WEBSITE PRODUCT SYSTEM
      ========================================================= */
 
   var WA = 'https://wa.me/2348087674813?text=';
   var FABRIC_IMG_DIR = 'products/fabrics/';
   var CAPS_IMG_DIR = 'products/caps/';
 
-  function wa(msg) {
-    return WA + encodeURIComponent(msg);
+  var registry = {};
+  var productCounter = 0;
+
+  function wa(message) {
+    return WA + encodeURIComponent(message);
   }
 
-  function esc(s) {
-    return String(s).replace(/[&<>"]/g, function (c) {
+  function esc(value) {
+    return String(value).replace(/[&<>"]/g, function (char) {
       return {
         '&': '&amp;',
         '<': '&lt;',
         '>': '&gt;',
         '"': '&quot;'
-      }[c];
+      }[char];
     });
   }
 
-  function imgSrc(file, item) {
+  function imagePath(file, item) {
     if (!file) return '';
-    if (file.indexOf('/') > -1) return file;
 
-    return (
-      item && item.c === 'Caps'
-        ? CAPS_IMG_DIR
-        : FABRIC_IMG_DIR
-    ) + file;
+    if (file.indexOf('/') !== -1) {
+      return file;
+    }
+
+    if (item && item.c === 'Caps') {
+      return CAPS_IMG_DIR + file;
+    }
+
+    return FABRIC_IMG_DIR + file;
   }
 
   /* =========================================================
@@ -56,7 +62,6 @@
         'b8a8bf51-7c44-499b-9f5e-e794bb70b10c.jpeg'
       ]
     },
-
     {
       n: 'Phanta Plus',
       p: '₦5,500',
@@ -76,7 +81,6 @@
         'ffc2e686-1408-46d7-b744-ae3934819a99.jpeg'
       ]
     },
-
     {
       n: 'Supreme Longhua',
       p: '₦3,700',
@@ -89,20 +93,18 @@
         '59d206e7-ef36-4de1-bd65-ced9bcf1c33f.jpeg'
       ]
     },
-
     {
       n: 'Wagambari',
       p: '₦30,000',
       u: '5-yard set',
-      d: 'Traditional men\'s fabric, supplied as a 5-yard set.',
       c: 'Wagambari',
+      d: "Traditional men's fabric, supplied as a 5-yard set.",
       img: [
         '12f09750-4c2f-4525-b568-d83e49d6c67d.jpeg',
         '73307f85-0d62-4bc9-9dd3-c8abf27992b2.jpeg',
         'c0a42112-daad-4d7a-9b8f-b8ec05aca145.jpeg'
       ]
     },
-
     {
       n: 'Excelsior',
       p: '₦3,800',
@@ -114,7 +116,6 @@
         '56bf07d0-14c2-44d8-af9d-541f447c98d3.jpeg'
       ]
     },
-
     {
       n: 'Goods Will',
       p: '₦3,800',
@@ -126,7 +127,6 @@
         'f7533c93-561e-42c2-a55a-324efb0ed811.jpeg'
       ]
     },
-
     {
       n: 'Casacada by Mhood',
       p: '₦4,500',
@@ -138,7 +138,6 @@
         'a244258d-9930-48b0-9b5a-5f46b52783f3.jpeg'
       ]
     },
-
     {
       n: 'Oliva',
       p: '₦4,000',
@@ -150,7 +149,6 @@
         'a0eb8619-13cc-4bff-9b0c-bd3a1f0c4f9b.jpeg'
       ]
     },
-
     {
       n: 'Trevita',
       p: '₦4,000',
@@ -162,26 +160,24 @@
         'c74dd1ab-0bcd-42e2-87bb-263364bd01a8.jpeg'
       ]
     },
-
     {
       n: 'Turkish Wool',
       p: '₦11,500',
       u: 'yard',
-      d: 'Wool fabric for refined tailoring.',
       c: 'Fabrics',
+      d: 'Wool fabric for refined tailoring.',
       img: [
         'b2def7dd-4815-43b6-800a-cabf775b9143.jpeg',
         '4e66d369-c72b-40b8-af99-77bfef461b8b.jpeg',
         '89322bd9-7a3b-407c-9b19-258d632d8252.jpeg'
       ]
     },
-
     {
       n: 'Yak Wool',
       p: '₦13,500',
       u: 'yard',
-      d: 'Wool fabric from our premium range.',
       c: 'Fabrics',
+      d: 'Wool fabric from our premium range.',
       img: [
         '4821145a-eba2-4978-833e-bdca3160b61d.jpeg',
         '5767b311-a8b4-4a93-a704-6963ea99ea4e.jpeg',
@@ -189,13 +185,12 @@
         'd67b7729-aaab-4d09-bd3e-c9b3b6b3f583.jpeg'
       ]
     },
-
     {
       n: 'VIP Ultimate',
       p: '₦7,000',
       u: 'yard',
-      d: 'A premium selection for distinguished dressing.',
       c: 'Fabrics',
+      d: 'A premium selection for distinguished dressing.',
       img: [
         '7a632124-9ed9-4d62-b536-c6002134f0fb.jpeg',
         'ad31e554-d1e9-4b20-b3ff-4c4a4b9cf839.jpeg',
@@ -213,8 +208,8 @@
       n: 'Zeeta',
       p: '₦6,000',
       u: 'wholesale price',
-      d: 'A refined traditional men’s cap with an elegant finish, designed to complement premium native outfits.',
       c: 'Caps',
+      d: 'A refined traditional men’s cap with an elegant finish, designed to complement premium native outfits.',
       img: [
         'f21c5def-a15f-48e2-a48f-540093b535eb.jpeg',
         '3963aba0-e097-43d5-a045-7163eb687c47.jpeg',
@@ -223,13 +218,12 @@
         'b99c9447-d3ba-4ddc-9b2c-93fd6150e957.jpeg'
       ]
     },
-
     {
       n: 'Eleganza',
       p: '₦9,000',
       u: 'wholesale price',
-      d: 'A sophisticated men’s cap designed with an elegant look to elevate distinguished native dressing.',
       c: 'Caps',
+      d: 'A sophisticated men’s cap designed with an elegant look to elevate distinguished native dressing.',
       img: [
         '45f6cdb2-ae7b-420a-8339-1048dd312e4a.jpeg',
         '0c862dc7-9110-4d12-bff4-f71f60f64ac5.jpeg',
@@ -242,13 +236,12 @@
         '351d0c31-10a4-4a13-9e9c-28528984d264.jpeg'
       ]
     },
-
     {
       n: 'Dara',
       p: '₦36,000',
       u: 'wholesale price',
-      d: 'A premium traditional men’s cap with a distinctive and elegant design, perfect for formal occasions and refined native wear.',
       c: 'Caps',
+      d: 'A premium traditional men’s cap with a distinctive and elegant design, perfect for formal occasions and refined native wear.',
       img: [
         'c2ea363b-2f67-446f-8572-12edb7c4d0f9.jpeg',
         '05f7ff4f-eb81-4d30-a8a0-1f902c3dd525.jpeg',
@@ -257,13 +250,12 @@
         'df030906-fabb-4d39-b0ff-8e9e6f6bc930.jpeg'
       ]
     },
-
     {
       n: 'Zanna',
       p: '₦18,000',
       u: 'wholesale price',
-      d: 'An elegant men’s cap crafted to bring a distinguished finishing touch to premium native outfits.',
       c: 'Caps',
+      d: 'An elegant men’s cap crafted to bring a distinguished finishing touch to premium native outfits.',
       img: [
         'IMG_4957.jpeg',
         'IMG_4958.jpeg',
@@ -280,13 +272,12 @@
         'ca602fe3-faa1-42a3-ad7c-3ea63449251d.jpeg'
       ]
     },
-
     {
       n: 'Tangaran',
       p: '₦40,000',
       u: 'wholesale price',
-      d: 'A premium traditional cap with a bold and sophisticated presence, designed for elevated native styling.',
       c: 'Caps',
+      d: 'A premium traditional cap with a bold and sophisticated presence, designed for elevated native styling.',
       img: [
         'IMG_4970.jpeg',
         'IMG_4971.jpeg',
@@ -300,13 +291,12 @@
         'IMG_4979.jpeg'
       ]
     },
-
     {
       n: 'Kindai Miyamar Borno',
       p: '₦35,000',
       u: 'wholesale price',
-      d: 'A distinguished traditional cap inspired by Northern elegance, made for premium native dressing and special occasions.',
       c: 'Caps',
+      d: 'A distinguished traditional cap inspired by Northern elegance, made for premium native dressing and special occasions.',
       img: [
         'IMG_4986.jpeg',
         'IMG_4989.jpeg',
@@ -323,131 +313,97 @@
     }
   ];
 
-  var arrivals = [];
-
   /* =========================================================
-     PRODUCT CARD SYSTEM
+     PRODUCT CARDS
      ========================================================= */
 
-  var pats = [
-    'twill',
-    'stripe',
-    'rib',
-    'basket',
-    'herring',
-    'dot'
-  ];
+  function createCard(item) {
+    var id = 'product-' + productCounter++;
 
-  var registry = {};
-  var uid = 0;
-
-  function makeCard(item) {
-    var id = 'p' + uid++;
     registry[id] = item;
 
-    var pat = pats[uid % pats.length];
-
-    var price = item.p
-      ? '<span class="price">' + esc(item.p) + '</span>' +
-        (item.u
-          ? '<span class="unit"> / ' + esc(item.u) + '</span>'
-          : '')
-      : '<span class="ask">Price on request</span>';
-
-    var msg =
-      'Hello HOF — Home of Fabric. I am interested in ' +
-      item.n +
-      '. Please send me more details and availability.';
-
-    var visual;
-
-    if (item.img && item.img.length) {
-      visual =
-        '<span class="sw has-product-image">' +
-        '<img src="' +
-        esc(imgSrc(item.img[0], item)) +
+    var firstImage = item.img && item.img.length
+      ? '<img src="' +
+        esc(imagePath(item.img[0], item)) +
         '" alt="' +
         esc(item.n) +
-        ' — HOF Home of Fabric" loading="lazy" decoding="async">' +
-        '</span>';
-    } else {
-      visual =
-        '<span class="sw">' +
-        '<svg aria-hidden="true" focusable="false">' +
-        '<rect width="100%" height="100%" fill="url(#p-' +
-        pat +
-        ')"/>' +
-        '</svg>' +
-        '</span>';
-    }
+        ' — HOF Home of Fabric" loading="lazy" decoding="async">'
+      : '';
 
     return (
-      '<div class="pc rv" style="--d:' +
-      (uid % 8) * 35 +
-      'ms">' +
+      '<article class="pc rv">' +
 
-      '<button type="button" class="pc-trigger" data-id="' +
-      id +
-      '" aria-label="View details: ' +
-      esc(item.n) +
-      '">' +
+        '<button ' +
+        'type="button" ' +
+        'class="pc-trigger" ' +
+        'data-product-id="' +
+        id +
+        '" ' +
+        'aria-label="View ' +
+        esc(item.n) +
+        ' details">' +
 
-      visual +
+          '<span class="sw has-product-image">' +
+            firstImage +
+          '</span>' +
 
-      '<span class="pc-body">' +
+          '<span class="pc-body">' +
+            '<span class="pc-name">' +
+              esc(item.n) +
+            '</span>' +
 
-      '<span class="pc-name">' +
-      esc(item.n) +
-      '</span>' +
+            (item.d
+              ? '<span class="pc-desc">' +
+                  esc(item.d) +
+                '</span>'
+              : '') +
 
-      (item.d
-        ? '<span class="pc-desc">' +
-          esc(item.d) +
-          '</span>'
-        : '') +
+            '<span class="price">' +
+              esc(item.p) +
+            '</span>' +
 
-      price +
+            '<span class="unit"> / ' +
+              esc(item.u) +
+            '</span>' +
 
-      '<span class="avail">' +
-      (item.tag
-        ? esc(item.tag)
-        : 'Confirm availability on WhatsApp') +
-      '</span>' +
+            '<span class="avail">' +
+              'Confirm availability on WhatsApp' +
+            '</span>' +
 
-      '</span>' +
+          '</span>' +
 
-      '</button>' +
+        '</button>' +
 
-      '<a class="order" href="' +
-      wa(msg) +
-      '" target="_blank" rel="noopener noreferrer" aria-label="Order on WhatsApp: ' +
-      esc(item.n) +
-      '">' +
+        '<a class="order" href="' +
+          wa(
+            'Hello HOF — Home of Fabric. I am interested in ' +
+            item.n +
+            '. Please send me more details and availability.'
+          ) +
+          '" target="_blank" rel="noopener noreferrer">' +
+          'Order on WhatsApp' +
+        '</a>' +
 
-      'Order on WhatsApp' +
-
-      '</a>' +
-
-      '</div>'
+      '</article>'
     );
   }
 
-  function fillGrid(id, list) {
-    var el = document.getElementById(id);
+  function renderGrid(elementId, items) {
+    var element = document.getElementById(elementId);
 
-    if (el) {
-      el.innerHTML = list.map(makeCard).join('');
-    }
+    if (!element) return;
+
+    element.innerHTML = items.map(createCard).join('');
   }
 
-  fillGrid('capGrid', caps);
-  fillGrid('arrivalGrid', arrivals);
+  /* CAPS */
+  renderGrid('capGrid', caps);
 
   /* =========================================================
      FABRIC FILTERS
      ========================================================= */
 
-  var cats = [
+  var categories = [
     'All',
     'Fabrics',
     'Lace',
@@ -459,83 +415,82 @@
     'Wagambari'
   ];
 
-  var chipsEl = document.getElementById('fabricChips');
+  var chips = document.getElementById('fabricChips');
+  var activeCategory = 'All';
+  var searchTerm = '';
 
-  if (chipsEl) {
-    chipsEl.innerHTML = cats.map(function (c, i) {
+  if (chips) {
+    chips.innerHTML = categories.map(function (category, index) {
       return (
-        '<button type="button" class="chip" data-cat="' +
-        esc(c) +
+        '<button type="button" class="chip" data-category="' +
+        esc(category) +
         '" aria-pressed="' +
-        (i === 0 ? 'true' : 'false') +
+        (index === 0 ? 'true' : 'false') +
         '">' +
-        esc(c) +
+        esc(category) +
         '</button>'
       );
     }).join('');
   }
 
-  var activeCat = 'All';
-  var query = '';
-
   function renderFabrics() {
-    var list = fabrics.filter(function (f) {
-      var matchCat =
-        activeCat === 'All' ||
-        f.c === activeCat;
+    var results = fabrics.filter(function (item) {
 
-      var hay = (
-        f.n +
-        ' ' +
-        (f.d || '') +
-        ' ' +
-        f.c
+      var categoryMatch =
+        activeCategory === 'All' ||
+        item.c === activeCategory;
+
+      var searchText = (
+        item.n + ' ' +
+        (item.d || '') + ' ' +
+        item.c
       ).toLowerCase();
 
-      var matchQuery =
-        !query ||
-        hay.indexOf(query) > -1;
+      var searchMatch =
+        !searchTerm ||
+        searchText.indexOf(searchTerm) !== -1;
 
-      return matchCat && matchQuery;
+      return categoryMatch && searchMatch;
     });
 
-    var grid = document.getElementById('fabricGrid');
+    renderGrid('fabricGrid', results);
+
     var empty = document.getElementById('fabricEmpty');
 
-    if (grid) {
-      grid.innerHTML = list.map(makeCard).join('');
-    }
-
     if (empty) {
-      empty.hidden = list.length > 0;
+      empty.hidden = results.length > 0;
     }
   }
 
   renderFabrics();
 
-  if (chipsEl) {
-    chipsEl.addEventListener('click', function (e) {
-      var b = e.target.closest('.chip');
+  if (chips) {
+    chips.addEventListener('click', function (event) {
+      var button = event.target.closest('.chip');
 
-      if (!b) return;
+      if (!button) return;
 
-      chipsEl.querySelectorAll('.chip').forEach(function (c) {
-        c.setAttribute('aria-pressed', 'false');
+      activeCategory =
+        button.getAttribute('data-category');
+
+      chips.querySelectorAll('.chip').forEach(function (chip) {
+        chip.setAttribute(
+          'aria-pressed',
+          chip === button ? 'true' : 'false'
+        );
       });
-
-      b.setAttribute('aria-pressed', 'true');
-
-      activeCat = b.getAttribute('data-cat');
 
       renderFabrics();
     });
   }
 
-  var searchInput = document.getElementById('fabricSearch');
+  var search = document.getElementById('fabricSearch');
 
-  if (searchInput) {
-    searchInput.addEventListener('input', function () {
-      query = searchInput.value.trim().toLowerCase();
+  if (search) {
+    search.addEventListener('input', function () {
+      searchTerm =
+        search.value.trim().toLowerCase();
+
       renderFabrics();
     });
   }
@@ -544,69 +499,78 @@
      SHOP BY CATEGORY
      ========================================================= */
 
-  var catMaster = [
-    { label: 'Fabrics', key: 'Fabrics', target: 'fabrics' },
-    { label: 'Lace', key: 'Lace', target: 'fabrics' },
-    { label: 'Voil', key: 'Voil', target: 'fabrics' },
-    { label: 'Atiku', key: 'Atiku', target: 'fabrics' },
-    { label: 'Swiss', key: 'Swiss', target: 'fabrics' },
-    { label: 'Getzner', key: 'Getzner', target: 'fabrics' },
-    { label: 'Shadda', key: 'Shadda', target: 'fabrics' },
-    { label: 'Wagambari', key: 'Wagambari', target: 'fabrics' },
-    { label: "Men's Caps", key: "Men's Caps", target: 'caps' }
-  ];
+  var categoryIndex =
+    document.getElementById('sbcIndex');
 
-  var sbcEl = document.getElementById('sbcIndex');
+  if (categoryIndex) {
 
-  if (sbcEl) {
-    sbcEl.innerHTML = catMaster.map(function (cat) {
-      var count =
-        cat.target === 'caps'
-          ? caps.length
-          : fabrics.filter(function (f) {
-              return f.c === cat.key;
-            }).length;
+    var categoryRows = [
+      ['Fabrics', 'Fabrics', 'fabrics'],
+      ['Lace', 'Lace', 'fabrics'],
+      ['Voil', 'Voil', 'fabrics'],
+      ['Atiku', 'Atiku', 'fabrics'],
+      ['Swiss', 'Swiss', 'fabrics'],
+      ['Getzner', 'Getzner', 'fabrics'],
+      ['Shadda', 'Shadda', 'fabrics'],
+      ['Wagambari', 'Wagambari', 'fabrics'],
+      ["Men's Caps", "Men's Caps", 'caps']
+    ];
 
-      var countLabel =
-        count > 0
-          ? count + (count === 1 ? ' piece' : ' pieces')
-          : 'Ask on WhatsApp';
+    categoryIndex.innerHTML =
+      categoryRows.map(function (row) {
 
-      return (
-        '<button type="button" class="sbc-row" data-key="' +
-        esc(cat.key) +
-        '" data-target="' +
-        cat.target +
-        '">' +
+        var count =
+          row[2] === 'caps'
+            ? caps.length
+            : fabrics.filter(function (item) {
+                return item.c === row[1];
+              }).length;
 
-        '<span class="sbc-name">' +
-        esc(cat.label) +
-        '</span>' +
+        return (
+          '<button type="button" class="sbc-row" ' +
+          'data-category="' +
+          esc(row[1]) +
+          '" ' +
+          'data-target="' +
+          row[2] +
+          '">' +
 
-        '<span class="sbc-meta">' +
+            '<span class="sbc-name">' +
+              esc(row[0]) +
+            '</span>' +
 
-        '<span class="sbc-count">' +
-        esc(countLabel) +
-        '</span>' +
+            '<span class="sbc-meta">' +
+              '<span class="sbc-count">' +
+                count +
+                (count === 1 ? ' piece' : ' pieces') +
+              '</span>' +
 
-        '<span class="sbc-arrow" aria-hidden="true">&rarr;</span>' +
+              '<span class="sbc-arrow">&rarr;</span>' +
 
-        '</span>' +
+            '</span>' +
 
-        '</button>'
-      );
-    }).join('');
+          '</button>'
+        );
 
-    sbcEl.addEventListener('click', function (e) {
-      var row = e.target.closest('.sbc-row');
+      }).join('');
+
+    categoryIndex.addEventListener('click', function (event) {
+
+      var row =
+        event.target.closest('.sbc-row');
 
       if (!row) return;
 
-      var key = row.getAttribute('data-key');
-      var target = row.getAttribute('data-target');
+      var target =
+        row.getAttribute('data-target');
+
+      var category =
+        row.getAttribute('data-category');
 
       if (target === 'caps') {
-        var capsSection = document.getElementById('caps');
+
+        var capsSection =
+          document.getElementById('caps');
 
         if (capsSection) {
           capsSection.scrollIntoView({
@@ -618,27 +582,28 @@
         return;
       }
 
-      activeCat = key;
-      query = '';
+      activeCategory = category;
+      searchTerm = '';
 
-      if (searchInput) {
-        searchInput.value = '';
+      if (search) {
+        search.value = '';
       }
 
-      renderFabrics();
-
-      if (chipsEl) {
-        chipsEl.querySelectorAll('.chip').forEach(function (c) {
-          c.setAttribute(
+      if (chips) {
+        chips.querySelectorAll('.chip').forEach(function (chip) {
+          chip.setAttribute(
             'aria-pressed',
-            c.getAttribute('data-cat') === key
+            chip.getAttribute('data-category') === category
               ? 'true'
               : 'false'
           );
         });
       }
 
-      var fabricSection = document.getElementById('fabrics');
+      renderFabrics();
+
+      var fabricSection =
+        document.getElementById('fabrics');
 
       if (fabricSection) {
         fabricSection.scrollIntoView({
@@ -646,6 +611,7 @@
           block: 'start'
         });
       }
+
     });
   }
 
@@ -653,342 +619,84 @@
      PRODUCT DETAIL MODAL
      ========================================================= */
 
-  var backdrop = document.getElementById('modalBackdrop');
-  var lastFocus = null;
-  var gal = null;
+  var backdrop =
+    document.getElementById('modalBackdrop');
 
-  var reduceMotion = window.matchMedia
-    ? window.matchMedia('(prefers-reduced-motion: reduce)')
-    : { matches: false };
+  var modalTitle =
+    document.getElementById('modalTitle');
 
-  function patternSwatch() {
-    var pat = pats[Math.floor(Math.random() * pats.length)];
+  var modalPrice =
+    document.getElementById('modalPrice');
 
-    return (
-      '<svg aria-hidden="true" focusable="false">' +
-      '<rect width="100%" height="100%" fill="url(#p-' +
-      pat +
-      ')"/>' +
-      '</svg>'
-    );
-  }
+  var modalDesc =
+    document.getElementById('modalDesc');
 
-  function galSync() {
-    if (!gal || !gal.track) return;
+  var modalAvail =
+    document.getElementById('modalAvail');
 
-    var count = gal.track.children.length;
-    var width = gal.track.clientWidth;
+  var modalOrder =
+    document.getElementById('modalOrder');
 
-    if (!count || !width) return;
+  var modalSwatch =
+    document.getElementById('modalSwatch');
 
-    var index = Math.max(
-      0,
-      Math.min(
-        count - 1,
-        Math.round(gal.track.scrollLeft / width)
-      )
-    );
+  var currentProduct = null;
+  var currentImageIndex = 0;
 
-    gal.i = index;
+  function openProduct(item) {
 
-    if (gal.count) {
-      gal.count.textContent =
-        (index + 1) + ' / ' + count;
-    }
+    if (!item) return;
 
-    if (gal.thumbs) {
-      Array.prototype.forEach.call(
-        gal.thumbs.children,
-        function (button, i) {
-          button.setAttribute(
-            'aria-current',
-            i === index ? 'true' : 'false'
-          );
-        }
+    if (!backdrop) {
+      console.error(
+        'HOF: modalBackdrop was not found.'
       );
-    }
-  }
-
-  function galGo(index) {
-    if (!gal || !gal.track) return;
-
-    var count = gal.track.children.length;
-
-    if (count < 2) return;
-
-    index = (index + count) % count;
-
-    gal.pend = index;
-
-    clearTimeout(gal.pt);
-
-    gal.pt = setTimeout(function () {
-      if (gal) {
-        gal.pend = null;
-      }
-    }, 700);
-
-    gal.track.scrollTo({
-      left: index * gal.track.clientWidth,
-      behavior: reduceMotion.matches ? 'auto' : 'smooth'
-    });
-  }
-
-  function galStep(direction) {
-    if (!gal) return;
-
-    galGo(
-      (gal.pend != null ? gal.pend : gal.i) +
-      direction
-    );
-  }
-
-  function galRefresh() {
-    if (!gal) return;
-
-    var count = gal.track.children.length;
-    var multiple = count > 1;
-
-    if (gal.thumbs) {
-      gal.thumbs.hidden = !multiple;
-
-      Array.prototype.forEach.call(
-        gal.thumbs.children,
-        function (button, i) {
-          button.setAttribute('data-i', i);
-          button.setAttribute(
-            'aria-label',
-            'Show photo ' + (i + 1)
-          );
-        }
-      );
-    }
-
-    var controls = document.querySelectorAll(
-      '#modalSwatch .gal-nav, ' +
-      '#modalSwatch .gal-count, ' +
-      '#modal-swatch .gal-nav, ' +
-      '#modal-swatch .gal-count'
-    );
-
-    Array.prototype.forEach.call(
-      controls,
-      function (el) {
-        el.hidden = !multiple;
-      }
-    );
-
-    galSync();
-  }
-
-  function buildGallery(item) {
-    var sw =
-      document.getElementById('modalSwatch') ||
-      document.getElementById('modal-swatch');
-
-    if (!sw) return;
-
-    var th = document.getElementById('modalThumbs');
-
-    if (!th) {
-      th = document.createElement('div');
-      th.id = 'modalThumbs';
-      th.className = 'modal-thumbs';
-
-      sw.parentNode.insertBefore(
-        th,
-        sw.nextSibling
-      );
-    }
-
-    gal = null;
-
-    th.hidden = true;
-    th.innerHTML = '';
-
-    var files = (item.img || []).filter(Boolean);
-
-    if (!files.length) {
-      sw.innerHTML =
-        patternSwatch() +
-        '<button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>';
-
       return;
     }
 
-    var slides = '';
-    var thumbs = '';
+    currentProduct = item;
+    currentImageIndex = 0;
 
-    files.forEach(function (file, i) {
-      var src = esc(imgSrc(file, item));
-
-      var alt = esc(
-        item.n +
-        ' — HOF Home of Fabric, photo ' +
-        (i + 1)
-      );
-
-      slides +=
-        '<div class="gal-slide">' +
-        '<img src="' +
-        src +
-        '" alt="' +
-        alt +
-        '" decoding="async" draggable="false"' +
-        (i ? ' loading="lazy"' : '') +
-        '>' +
-        '</div>';
-
-      thumbs +=
-        '<button type="button" class="thumb" data-i="' +
-        i +
-        '" aria-label="Show photo ' +
-        (i + 1) +
-        '">' +
-        '<img src="' +
-        src +
-        '" alt="" decoding="async" loading="lazy" draggable="false">' +
-        '</button>';
-    });
-
-    sw.innerHTML =
-      '<div class="gal" role="group" aria-roledescription="carousel" aria-label="' +
-      esc(item.n) +
-      ' photos">' +
-
-      '<div class="gal-track">' +
-      slides +
-      '</div>' +
-
-      '<button type="button" class="gal-nav gal-prev" aria-label="Previous photo">&#8249;</button>' +
-
-      '<button type="button" class="gal-nav gal-next" aria-label="Next photo">&#8250;</button>' +
-
-      '<span class="gal-count" aria-live="polite"></span>' +
-
-      '</div>' +
-
-      '<button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>';
-
-    th.innerHTML = thumbs;
-
-    gal = {
-      track: sw.querySelector('.gal-track'),
-      count: sw.querySelector('.gal-count'),
-      thumbs: th,
-      i: 0,
-      pend: null,
-      pt: null
-    };
-
-    var ticking = false;
-
-    gal.track.addEventListener(
-      'scroll',
-      function () {
-        if (ticking) return;
-
-        ticking = true;
-
-        requestAnimationFrame(function () {
-          ticking = false;
-          galSync();
-        });
-      },
-      { passive: true }
-    );
-
-    galRefresh();
-  }
-
-  /* =========================================================
-     GALLERY CONTROLS
-     ========================================================= */
-
-  document.addEventListener('click', function (e) {
-    if (!gal) return;
-
-    var target = e.target.closest(
-      '.gal-prev, .gal-next, .thumb'
-    );
-
-    if (!target) return;
-
-    if (target.classList.contains('thumb')) {
-      galGo(
-        Number(target.getAttribute('data-i'))
-      );
-    } else {
-      galStep(
-        target.classList.contains('gal-next')
-          ? 1
-          : -1
-      );
-    }
-  });
-
-  /* =========================================================
-     PRODUCT MODAL
-     ========================================================= */
-
-  function openModal(item) {
-    if (!item || !backdrop) return;
-
-    lastFocus = document.activeElement;
-
-    var title = document.getElementById('modalTitle');
-    var price = document.getElementById('modalPrice');
-    var desc = document.getElementById('modalDesc');
-    var avail = document.getElementById('modalAvail');
-    var order = document.getElementById('modalOrder');
-
-    if (title) {
-      title.textContent = item.n;
+    if (modalTitle) {
+      modalTitle.textContent = item.n;
     }
 
-    if (price) {
-      price.innerHTML = item.p
-        ? '<span class="price">' +
-          esc(item.p) +
-          '</span>' +
-          (item.u
-            ? '<span class="unit">/ ' +
-              esc(item.u) +
-              '</span>'
-            : '')
-        : '<span class="ask">Price on request</span>';
+    if (modalPrice) {
+      modalPrice.innerHTML =
+        '<strong>' +
+        esc(item.p) +
+        '</strong>' +
+        '<span> / ' +
+        esc(item.u) +
+        '</span>';
     }
 
-    if (desc) {
-      desc.textContent =
+    if (modalDesc) {
+      modalDesc.textContent =
         item.d ||
         'Premium selection from HOF — Home of Fabric.';
     }
 
-    if (avail) {
-      avail.textContent =
-        item.u
-          ? 'Unit: ' +
-            item.u +
-            ' · Availability confirmed on WhatsApp'
-          : 'Availability confirmed on WhatsApp';
+    if (modalAvail) {
+      modalAvail.textContent =
+        'Available — confirm current colours and stock on WhatsApp.';
     }
 
-    buildGallery(item);
+    renderModalGallery();
 
-    var message =
-      'Hello HOF — Home of Fabric 👋\n\n' +
-      'I am interested in: ' +
-      item.n +
-      '\n' +
-      'Price: ' +
-      (item.p || 'Price on request') +
-      (item.u ? ' / ' + item.u : '') +
-      '\n\n' +
-      'Please send me more details and availability.';
-
-    if (order) {
-      order.href = wa(message);
+    if (modalOrder) {
+      modalOrder.href = wa(
+        'Hello HOF — Home of Fabric 👋\n\n' +
+        'I am interested in: ' +
+        item.n +
+        '\n' +
+        'Price: ' +
+        item.p +
+        ' / ' +
+        item.u +
+        '\n\n' +
+        'Please send me more details and availability.'
+      );
     }
 
     backdrop.classList.add('open');
@@ -996,17 +704,71 @@
 
     document.body.style.overflow = 'hidden';
 
-    var close =
+    var closeButton =
       document.getElementById('modalClose');
 
-    if (close) {
+    if (closeButton) {
       setTimeout(function () {
-        close.focus();
-      }, 30);
+        closeButton.focus();
+      }, 50);
     }
   }
 
-  function closeModal() {
+  function renderModalGallery() {
+
+    if (!modalSwatch || !currentProduct) {
+      return;
+    }
+
+    var images =
+      currentProduct.img || [];
+
+    var image =
+      images[currentImageIndex];
+
+    var imageHTML = image
+      ? '<img src="' +
+        esc(imagePath(image, currentProduct)) +
+        '" alt="' +
+        esc(currentProduct.n) +
+        ' — HOF Home of Fabric" draggable="false">'
+      : '';
+
+    modalSwatch.innerHTML =
+      '<div class="gal">' +
+
+        '<div class="gal-track">' +
+          '<div class="gal-slide">' +
+            imageHTML +
+          '</div>' +
+        '</div>' +
+
+        '<button type="button" class="gal-nav gal-prev" aria-label="Previous photo">' +
+          '&#8249;' +
+        '</button>' +
+
+        '<button type="button" class="gal-nav gal-next" aria-label="Next photo">' +
+          '&#8250;' +
+        '</button>' +
+
+        '<span class="gal-count">' +
+          (images.length
+            ? (currentImageIndex + 1) +
+              ' / ' +
+              images.length
+            : '') +
+        '</span>' +
+
+      '</div>' +
+
+      '<button type="button" class="modal-close" id="modalClose" aria-label="Close">' +
+        '&times;' +
+      '</button>';
+
+  }
+
+  function closeProduct() {
+
     if (!backdrop) return;
 
     backdrop.classList.remove('open');
@@ -1014,50 +776,101 @@
 
     document.body.style.overflow = '';
 
-    gal = null;
+    currentProduct = null;
+  }
 
-    if (lastFocus && typeof lastFocus.focus === 'function') {
-      setTimeout(function () {
-        lastFocus.focus();
-      }, 20);
-    }
+  function nextImage() {
+
+    if (!currentProduct) return;
+
+    var images =
+      currentProduct.img || [];
+
+    if (images.length < 2) return;
+
+    currentImageIndex =
+      (currentImageIndex + 1) %
+      images.length;
+
+    renderModalGallery();
+  }
+
+  function previousImage() {
+
+    if (!currentProduct) return;
+
+    var images =
+      currentProduct.img || [];
+
+    if (images.length < 2) return;
+
+    currentImageIndex =
+      (currentImageIndex - 1 + images.length) %
+      images.length;
+
+    renderModalGallery();
   }
 
   /* =========================================================
-     PRODUCT CARD CLICK
+     ONE GLOBAL CLICK HANDLER
      ========================================================= */
 
-  document.addEventListener('click', function (e) {
-    var trigger = e.target.closest('.pc-trigger');
+  document.addEventListener('click', function (event) {
 
-    if (trigger) {
-      var item =
-        registry[
-          trigger.getAttribute('data-id')
-        ];
+    /* PRODUCT CARD */
+    var productButton =
+      event.target.closest('.pc-trigger');
 
-      if (item) {
-        openModal(item);
+    if (productButton) {
+
+      var productId =
+        productButton.getAttribute(
+          'data-product-id'
+        );
+
+      var product =
+        registry[productId];
+
+      if (product) {
+        openProduct(product);
       }
 
       return;
     }
 
-    if (!backdrop) return;
-
+    /* CLOSE MODAL */
     if (
-      e.target === backdrop ||
-      e.target.closest('#modalClose')
+      event.target === backdrop ||
+      event.target.closest('#modalClose')
     ) {
-      closeModal();
+      closeProduct();
+      return;
     }
+
+    /* PREVIOUS IMAGE */
+    if (
+      event.target.closest('.gal-prev')
+    ) {
+      previousImage();
+      return;
+    }
+
+    /* NEXT IMAGE */
+    if (
+      event.target.closest('.gal-next')
+    ) {
+      nextImage();
+      return;
+    }
+
   });
 
   /* =========================================================
-     KEYBOARD CONTROLS
+     KEYBOARD
      ========================================================= */
 
-  document.addEventListener('keydown', function (e) {
+  document.addEventListener('keydown', function (event) {
+
     if (
       !backdrop ||
       !backdrop.classList.contains('open')
@@ -1065,49 +878,18 @@
       return;
     }
 
-    if (e.key === 'Escape') {
-      closeModal();
-      return;
+    if (event.key === 'Escape') {
+      closeProduct();
     }
 
-    if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      galStep(1);
-      return;
+    if (event.key === 'ArrowRight') {
+      nextImage();
     }
 
-    if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      galStep(-1);
-      return;
+    if (event.key === 'ArrowLeft') {
+      previousImage();
     }
 
-    if (e.key === 'Tab') {
-      var focusable =
-        backdrop.querySelectorAll(
-          'button, a[href], input, select, textarea'
-        );
-
-      if (!focusable.length) return;
-
-      var first = focusable[0];
-      var last =
-        focusable[focusable.length - 1];
-
-      if (
-        e.shiftKey &&
-        document.activeElement === first
-      ) {
-        e.preventDefault();
-        last.focus();
-      } else if (
-        !e.shiftKey &&
-        document.activeElement === last
-      ) {
-        e.preventDefault();
-        first.focus();
-      }
-    }
   });
 
   /* =========================================================
@@ -1117,154 +899,112 @@
   var burger =
     document.querySelector('.burger');
 
-  var nav =
+  var menu =
     document.getElementById('menu');
 
-  var mainEl =
-    document.getElementById('main');
+  if (burger && menu) {
 
-  var footerEl =
-    document.querySelector('.footer');
-
-  function setMenu(open) {
-    if (!nav || !burger) return;
-
-    nav.classList.toggle('open', open);
-
-    burger.setAttribute(
-      'aria-expanded',
-      String(open)
-    );
-
-    burger.setAttribute(
-      'aria-label',
-      open ? 'Close menu' : 'Open menu'
-    );
-
-    document.body.style.overflow =
-      open ? 'hidden' : '';
-
-    [mainEl, footerEl].forEach(function (el) {
-      if (!el) return;
-
-      if (open) {
-        el.setAttribute('inert', '');
-      } else {
-        el.removeAttribute('inert');
-      }
-    });
-  }
-
-  if (burger) {
     burger.addEventListener('click', function () {
-      setMenu(
-        !nav.classList.contains('open')
+
+      var open =
+        menu.classList.toggle('open');
+
+      burger.setAttribute(
+        'aria-expanded',
+        String(open)
       );
-    });
-  }
 
-  if (nav) {
-    nav.addEventListener('click', function (e) {
-      if (e.target.closest('a')) {
-        setMenu(false);
+      document.body.style.overflow =
+        open ? 'hidden' : '';
+
+    });
+
+    menu.addEventListener('click', function (event) {
+
+      if (event.target.closest('a')) {
+
+        menu.classList.remove('open');
+
+        burger.setAttribute(
+          'aria-expanded',
+          'false'
+        );
+
+        document.body.style.overflow = '';
+
       }
-    });
-  }
 
-  document.addEventListener('keydown', function (e) {
-    if (
-      e.key === 'Escape' &&
-      nav &&
-      nav.classList.contains('open')
-    ) {
-      setMenu(false);
-    }
-  });
+    });
+
+  }
 
   /* =========================================================
      SCROLL REVEAL
      ========================================================= */
 
-  function initReveal() {
-    var items =
-      document.querySelectorAll('.rv');
+  var revealItems =
+    document.querySelectorAll('.rv');
 
-    if ('IntersectionObserver' in window) {
-      var io =
-        new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('in');
-                io.unobserve(entry.target);
-              }
-            });
-          },
-          {
-            threshold: 0.12,
-            rootMargin: '0px 0px -6% 0px'
+  if ('IntersectionObserver' in window) {
+
+    var observer =
+      new IntersectionObserver(function (entries) {
+
+        entries.forEach(function (entry) {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add('in');
+
+            observer.unobserve(entry.target);
+
           }
-        );
 
-      items.forEach(function (el) {
-        io.observe(el);
+        });
+
+      }, {
+        threshold: 0.1
       });
-    } else {
-      items.forEach(function (el) {
-        el.classList.add('in');
-      });
-    }
+
+    revealItems.forEach(function (element) {
+      observer.observe(element);
+    });
+
+  } else {
+
+    revealItems.forEach(function (element) {
+      element.classList.add('in');
+    });
+
   }
-
-  initReveal();
 
   /* =========================================================
      FLOATING WHATSAPP
      ========================================================= */
 
-  var fab =
+  var floating =
     document.getElementById('fab');
 
-  var scrollTicking = false;
+  if (floating) {
 
-  function onScroll() {
-    scrollTicking = false;
+    function updateFloating() {
 
-    if (!fab) return;
-
-    fab.classList.toggle(
-      'show',
-      window.scrollY >
+      floating.classList.toggle(
+        'show',
+        window.scrollY >
         window.innerHeight * 0.8
+      );
+
+    }
+
+    window.addEventListener(
+      'scroll',
+      updateFloating,
+      { passive: true }
     );
+
+    updateFloating();
+
   }
-
-  window.addEventListener(
-    'scroll',
-    function () {
-      if (scrollTicking) return;
-
-      scrollTicking = true;
-
-      requestAnimationFrame(onScroll);
-    },
-    { passive: true }
-  );
-
-  onScroll();
-
-  /* =========================================================
-     WINDOW RESIZE
-     ========================================================= */
-
-  window.addEventListener(
-    'resize',
-    function () {
-      if (gal) {
-        galSync();
-      }
-    },
-    { passive: true }
-  );
 
 })();
