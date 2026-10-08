@@ -21,7 +21,8 @@
      PRODUCT CATALOGUE
      ========================================================= */
 
-  var IMG_DIR='products/fabrics/';
+  var FABRIC_IMG_DIR='products/fabrics/';
+var CAPS_IMG_DIR='products/caps/';
 
   var fabrics=[
 
@@ -359,7 +360,7 @@
 
     if(hasImage){
 
-      var firstImage=esc(imgSrc(item.img[0]));
+      var firstImage=esc(imgSrc(item.img[0],item));
 
       visual=
         '<span class="sw has-product-image">'
@@ -752,14 +753,13 @@
     '<button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>';
 
 
-  function imgSrc(f){
+  function imgSrc(f,item){
 
     return f.indexOf('/')>-1
       ? f
-      : IMG_DIR+f;
+      : (item && item.c==='Caps' ? CAPS_IMG_DIR : FABRIC_IMG_DIR)+f;
 
   }
-
 
   function patternSwatch(){
 
@@ -1003,7 +1003,7 @@
     files.forEach(function(f,i){
 
       var src=
-        esc(imgSrc(f));
+  esc(imgSrc(f,item));
 
       var alt=
         esc(
