@@ -396,3 +396,15 @@ html.js .rv.in{opacity:1;transform:none}
     margin-top:28px;
   }
 }
+.footer-logo{
+  width:110px;
+  height:auto;
+  display:block;
+  margin-bottom:20px;
+}
+
+@media (max-width:700px){
+  .footer-logo{
+    width:90px;
+  }
+}
