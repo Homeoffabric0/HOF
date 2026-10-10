@@ -1,0 +1,65 @@
+media:
+  input: products
+  output: products
+
+content:
+  - name: fabrics
+    label: Fabrics
+    type: collection
+    path: products/fabrics
+    format: json
+    filename: index
+    fields:
+      - name: products
+        label: Products
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Product Name
+            type: string
+          - name: price
+            label: Price
+            type: number
+          - name: unit
+            label: Price Unit
+            type: string
+          - name: category
+            label: Category
+            type: string
+          - name: description
+            label: Description
+            type: text
+          - name: images
+            label: Product Images
+            type: image
+            list: true
+
+  - name: caps
+    label: Traditional Caps
+    type: collection
+    path: products/caps
+    format: json
+    filename: index
+    fields:
+      - name: products
+        label: Products
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Cap Name
+            type: string
+          - name: price
+            label: Wholesale Price
+            type: number
+          - name: category
+            label: Category
+            type: string
+          - name: description
+            label: Description
+            type: text
+          - name: images
+            label: Cap Images
+            type: image
+            list: true
