@@ -978,7 +978,7 @@
 
   }
 
-  /* =========================================================
+    /* =========================================================
      FLOATING WHATSAPP
      ========================================================= */
 
@@ -1007,35 +1007,60 @@
 
   }
 
+  /* =========================================================
+     LOAD NEW ARRIVALS FROM products.json
+     ========================================================= */
+
+  fetch('./products.json')
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error(
+          'Could not load products.json'
+        );
+      }
+
+      return response.json();
+    })
+    .then(function (data) {
+
+      var arrivals = (data.products || [])
+        .filter(function (product) {
+          return product.newArrival === true;
+        })
+        .map(function (product) {
+
+          return {
+            n: product.name,
+            p: product.price,
+            u: product.unit || 'yard',
+            c: product.category || 'Fabrics',
+            d: product.description || '',
+            img: Array.isArray(product.images)
+              ? product.images
+              : product.image
+                ? [product.image]
+                : []
+          };
+
+        })
+        .filter(function (product) {
+          return product.img.length > 0;
+        });
+
+      renderGrid('arrivalGrid', arrivals);
+
+      document
+        .querySelectorAll('#arrivalGrid .rv')
+        .forEach(function (card) {
+          card.classList.add('in');
+        });
+
+    })
+    .catch(function (error) {
+      console.error(
+        'HOF New Arrivals error:',
+        error
+      );
+    });
+
 })();
-// Load New Arrivals from products.json
-fetch('./products.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Could not load products.json');
-    }
-    return response.json();
-  })
-  .then(data => {
-    const arrivals = (data.products || [])
-      .filter(product => product.newArrival === true)
-      .map(product => ({
-        n: product.name,
-        p: product.price,
-        u: product.unit || 'piece',
-        c: product.category || 'Fabrics',
-        d: product.description || '',
-        img: Array.isArray(product.images)
-          ? product.images
-          : product.image
-            ? [product.image]
-            : []
-      }))
-      .filter(product => product.img.length > 0);
-
-    renderGrid('arrivalGrid', arrivals);
-
-    document.querySelectorAll('#arrivalGrid .rv')
-      .forEach(card => card.classList.add('in'));
-  })
-  .catch(error => console.error('New Arrivals:', error));
