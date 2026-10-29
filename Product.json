@@ -5,7 +5,55 @@
 “price”: “₦7,000”,
 “unit”: “yard”,
 “category”: “Fabrics”,
-“image”: “products/fabrics/premium-swiss.jpeg”,
+“image”: “products/fabrics/378117a0-b05f-4f53-a765-21b12b4f3ee7.jpeg”,
+“newArrival”: true
+},
+{
+“name”: “Premium Swiss”,
+“price”: “₦7,000”,
+“unit”: “yard”,
+“category”: “Fabrics”,
+“image”: “products/fabrics/b784479e-08db-4c57-a0ae-005f0041f8ed.jpeg”,
+“newArrival”: true
+},
+{
+“name”: “Premium Swiss”,
+“price”: “₦7,000”,
+“unit”: “yard”,
+“category”: “Fabrics”,
+“image”: “products/fabrics/4ad9eaa9-e7a3-4d10-bb2b-88831f8c5f20.jpeg”,
+“newArrival”: true
+},
+{
+“name”: “Premium Swiss”,
+“price”: “₦7,000”,
+“unit”: “yard”,
+“category”: “Fabrics”,
+“image”: “products/fabrics/e8b9da02-2aa7-47df-88c6-d3566aa066ec.jpeg”,
+“newArrival”: true
+},
+{
+“name”: “Premium Swiss”,
+“price”: “₦7,000”,
+“unit”: “yard”,
+“category”: “Fabrics”,
+“image”: “products/fabrics/5d916e75-7fa0-45a5-956f-c12f554e8858.jpeg”,
+“newArrival”: true
+},
+{
+“name”: “Premium Swiss”,
+“price”: “₦7,000”,
+“unit”: “yard”,
+“category”: “Fabrics”,
+“image”: “products/fabrics/c687d6b2-7d03-40a1-bdf3-0b1728ddee4f.jpeg”,
+“newArrival”: true
+},
+{
+“name”: “Premium Swiss”,
+“price”: “₦7,000”,
+“unit”: “yard”,
+“category”: “Fabrics”,
+“image”: “products/fabrics/bb02f2c5-ab43-4779-bc38-af6fe667a9b0.jpeg”,
 “newArrival”: true
 }
 ]
